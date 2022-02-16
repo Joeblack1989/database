@@ -1,30 +1,25 @@
-# data=[
-#     {'Фамилия':'Иванов','Имя':'Иван', 'Год рождения':'2010','класс':'5','Средний балл':'4,7'},
-#     {'Фамилия':'Петров','Имя':'Петр', 'Год рождения':'2011','класс':'4','Средний балл':'4,3'},
-#     {'Фамилия':'Сидооров','Имя':'Семен', 'Год рождения':'2012','класс':'','Средний балл':'4,5'},
-#     {'Фамилия':'Круглова','Имя':'Анна', 'Год рождения':'2009','класс':'6','Средний балл':'4,9'},
-#     {'Фамилия':'Трофимова','Имя':'Елена', 'Год рождения':'2008','класс':'7',' балл':'4,8'},
-# ]Средний
+import r_w_file
+import working_file
+import action_table
 
-import csv
+path_txt = 'base_data.txt'
+data = r_w_file.read_file(f'{path_txt}')
+action_table.output_all(data)
 
+working_file.append_info(data,path_txt)
+action_table.output_all(data)
 
-
-with open('base.csv', 'rt') as f:
-    reader = csv.DictReader(f) 
-    res={}
-    for row in reader: 
-        res.popitem(row)
-    print(res)
+working_file.del_info(data,path_txt)
+action_table.output_all(data)
 
 
+# 1. Работа с файлом (Вход Файл - Выход словарь)
+# 2. Работа с данными (Вход Множество, Значение для действия - Выход Печать)
+# Вывод учеников определенного класса
+# Вывод учеников по Алфавиту по фамилии
+# 3. Пользовательский интерфейс (Вход Пользовательский - Возвращает значение для действия)
+# 4. "Кнопка" (Сбор структуры модулей)
 
 
-# with open('base.csv', 'w') as f:
-#     writer = csv.DictWriter(
-#         f, fieldnames=list(data[0].keys()), quoting=csv.QUOTE_NONNUMERIC)
-#     writer.writeheader()
-#     for d in data:
-#         writer.writerow(d)
 
- 
+
